@@ -20,9 +20,7 @@ export class AppService {
   }
 
   async watchAccountBalance(): Promise<any> {
-    const ACCOUNT_TO_WATCH = new PublicKey(
-      '2p9zLnZ8SSudy65YNvUopTWsX2QDJAqpumPsRLRNuHQQ',
-    );
+    const ACCOUNT_TO_WATCH = new PublicKey(process.env.WALLET_ADDRESS);
 
     const balance = await this.solanaConnection.getBalance(ACCOUNT_TO_WATCH);
     console.log(`Wallet Balance: ${balance / LAMPORTS_PER_SOL}`);
@@ -30,9 +28,7 @@ export class AppService {
   }
 
   async addAccountBalance(): Promise<any> {
-    const ACCOUNT_TO_WATCH = new PublicKey(
-      '2p9zLnZ8SSudy65YNvUopTWsX2QDJAqpumPsRLRNuHQQ',
-    );
+    const ACCOUNT_TO_WATCH = new PublicKey(process.env.WALLET_ADDRESS);
 
     await this.solanaConnection.requestAirdrop(
       ACCOUNT_TO_WATCH,
@@ -43,9 +39,7 @@ export class AppService {
   }
 
   async subscribeToAccountChange(): Promise<any> {
-    const ACCOUNT_TO_WATCH = new PublicKey(
-      '2p9zLnZ8SSudy65YNvUopTWsX2QDJAqpumPsRLRNuHQQ',
-    );
+    const ACCOUNT_TO_WATCH = new PublicKey(process.env.WALLET_ADDRESS);
     const subscriptionId = await this.solanaConnection.onAccountChange(
       ACCOUNT_TO_WATCH,
       (updatedAccountInfo) => {
