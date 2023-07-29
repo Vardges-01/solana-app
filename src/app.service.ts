@@ -6,10 +6,8 @@ export class AppService {
   private solanaConnection: Connection;
 
   constructor() {
-    const WSS_ENDPOINT =
-      'wss://radial-rough-night.solana-testnet.discover.quiknode.pro/3256e049924dd0382403c818b3083f946396d612/';
-    const HTTP_ENDPOINT =
-      'https://radial-rough-night.solana-testnet.discover.quiknode.pro/3256e049924dd0382403c818b3083f946396d612/';
+    const WSS_ENDPOINT = process.env.WSS_ENDPOINT;
+    const HTTP_ENDPOINT = process.env.HTTP_ENDPOINT;
 
     // const WSS_ENDPOINT = 'wss://testnet.solana.com';
     // const HTTP_ENDPOINT = 'https://api.testnet.solana.com';
@@ -44,7 +42,7 @@ export class AppService {
       ACCOUNT_TO_WATCH,
       (updatedAccountInfo) => {
         console.log(
-          `---Event Notification for ${ACCOUNT_TO_WATCH.toString()}--- \nNew Account Balance:`,
+          `Event Notification for ${ACCOUNT_TO_WATCH.toString()} \nNew Account Balance:`,
           updatedAccountInfo.lamports / LAMPORTS_PER_SOL,
           ' SOL',
         );
