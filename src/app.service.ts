@@ -18,12 +18,9 @@ export class AppService {
     // const HTTP_ENDPOINT = process.env.HTTP_ENDPOINT;
 
     // const WSS_ENDPOINT = 'wss://testnet.solana.com';
-    // const HTTP_ENDPOINT = 'https://api.testnet.solana.com';
+    const HTTP_ENDPOINT = 'https://api.testnet.solana.com';
 
-    this.solanaConnection = new Connection(
-      'https://api.testnet.solana.com',
-      'confirmed',
-    );
+    this.solanaConnection = new Connection(HTTP_ENDPOINT, 'confirmed');
   }
 
   async watchAccountBalance(walletAddress: any): Promise<any> {
